@@ -9,6 +9,11 @@
             "email": "m.thaller@m-thaller.de"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "MThaller\\PhpCups": "src/"
+        }
+    },
     "minimum-stability": "dev",
     "require": {
         "php": "^7.0"
