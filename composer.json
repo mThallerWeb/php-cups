@@ -2,6 +2,7 @@
     "name": "mthaller/php-cups",
     "description": "Package to connect to local CUPS with PHP to print",
     "type": "library",
+    "license": "MIT",
     "authors": [
         {
             "name": "Michael Thaller",
