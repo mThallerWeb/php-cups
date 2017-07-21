@@ -11,7 +11,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "MThaller\\PhpCups": "src/"
+            "MThaller\\PhpCups\\": "src/"
         }
     },
     "minimum-stability": "dev",
