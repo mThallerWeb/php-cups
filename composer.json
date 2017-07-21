@@ -1,0 +1,13 @@
+{
+    "name": "mthallerweb/php-cups",
+    "description": "Package to connect to local CUPS with PHP to print",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Michael Thaller",
+            "email": "m.thaller@m-thaller.de"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
