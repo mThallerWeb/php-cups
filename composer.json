@@ -1,5 +1,5 @@
 {
-    "name": "mthallerweb/php-cups",
+    "name": "mthaller/php-cups",
     "description": "Package to connect to local CUPS with PHP to print",
     "type": "library",
     "authors": [
@@ -9,5 +9,7 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "php": "^7.0"
+    }
 }
