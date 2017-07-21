@@ -1,9 +1,9 @@
-<?php namespace MThallerWeb\PhpCups\Abstracts;
+<?php namespace MThaller\PhpCups\Abstracts;
 
-use MThallerWeb\PhpCups\Exceptions\CommandNotDefinedException;
-use MThallerWeb\PhpCups\Helpers\Traits\ExtendedTraits;
-use MThallerWeb\PhpCups\Responses\Error;
-use MThallerWeb\PhpCups\Responses\StdResponse;
+use MThaller\PhpCups\Exceptions\CommandNotDefinedException;
+use MThaller\PhpCups\Helpers\Traits\ExtendedTraits;
+use MThaller\PhpCups\Responses\Error;
+use MThaller\PhpCups\Responses\StdResponse;
 use Symfony\Component\Process\Process;
 
 abstract class Entity

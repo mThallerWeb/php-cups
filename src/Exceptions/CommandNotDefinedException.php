@@ -1,4 +1,4 @@
-<?php namespace MThallerWeb\PhpCups\Exceptions;
+<?php namespace MThaller\PhpCups\Exceptions;
 
 class CommandNotDefinedException extends \Exception {
 

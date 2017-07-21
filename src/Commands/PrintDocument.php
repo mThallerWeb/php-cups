@@ -1,9 +1,9 @@
-<?php namespace MThallerWeb\PhpCups\Commands;
+<?php namespace MThaller\PhpCups\Commands;
 
-use MThallerWeb\PhpCups\Abstracts\Command;
-use MThallerWeb\PhpCups\Commands\Traits\UsesPrinter;
-use MThallerWeb\PhpCups\Exceptions\InvalidArgumentException;
-use MThallerWeb\PhpCups\Responses\PrinterList;
+use MThaller\PhpCups\Abstracts\Command;
+use MThaller\PhpCups\Commands\Traits\UsesPrinter;
+use MThaller\PhpCups\Exceptions\InvalidArgumentException;
+use MThaller\PhpCups\Responses\PrinterList;
 
 class PrintDocument extends Command {
 

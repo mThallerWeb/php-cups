@@ -1,6 +1,6 @@
-<?php namespace MThallerWeb\PhpCups\Commands\Traits;
+<?php namespace MThaller\PhpCups\Commands\Traits;
 
-use MThallerWeb\PhpCups\Exceptions\PrinterNotDefinedException;
+use MThaller\PhpCups\Exceptions\PrinterNotDefinedException;
 
 trait UsesPrinter
 {

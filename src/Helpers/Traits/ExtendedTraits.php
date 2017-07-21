@@ -1,4 +1,4 @@
-<?php namespace MThallerWeb\PhpCups\Helpers\Traits;
+<?php namespace MThaller\PhpCups\Helpers\Traits;
 
 trait ExtendedTraits
 {

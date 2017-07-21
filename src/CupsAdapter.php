@@ -1,6 +1,6 @@
 <?php
 
-namespace MThallerWeb\PhpCups;
+namespace MThaller\PhpCups;
 
 use Illuminate\Support\ServiceProvider;
 

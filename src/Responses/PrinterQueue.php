@@ -1,7 +1,7 @@
-<?php namespace MThallerWeb\PhpCups\Responses;
+<?php namespace MThaller\PhpCups\Responses;
 
-use MThallerWeb\PhpCups\Abstracts\CommandResponse;
-use MThallerWeb\PhpCups\Entities\QueueEntry;
+use MThaller\PhpCups\Abstracts\CommandResponse;
+use MThaller\PhpCups\Entities\QueueEntry;
 
 class PrinterQueue extends CommandResponse
 {

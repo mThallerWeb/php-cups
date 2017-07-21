@@ -1,6 +1,6 @@
-<?php namespace MThallerWeb\PhpCups\Abstracts;
+<?php namespace MThaller\PhpCups\Abstracts;
 
-use MThallerWeb\PhpCups\Exceptions\InvalidStatusException;
+use MThaller\PhpCups\Exceptions\InvalidStatusException;
 
 abstract class CommandResponse
 {

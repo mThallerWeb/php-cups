@@ -1,8 +1,8 @@
-<?php namespace MThallerWeb\PhpCups\Entities;
+<?php namespace MThaller\PhpCups\Entities;
 
-use MThallerWeb\PhpCups\Abstracts\Entity;
-use MThallerWeb\PhpCups\Exceptions\InvalidArgumentException;
-use MThallerWeb\PhpCups\Exceptions\InvalidStatusException;
+use MThaller\PhpCups\Abstracts\Entity;
+use MThaller\PhpCups\Exceptions\InvalidArgumentException;
+use MThaller\PhpCups\Exceptions\InvalidStatusException;
 
 class QueueEntry extends Entity
 {

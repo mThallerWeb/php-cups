@@ -1,6 +1,6 @@
-<?php namespace MThallerWeb\PhpCups\Responses;
+<?php namespace MThaller\PhpCups\Responses;
 
-use MThallerWeb\PhpCups\Abstracts\CommandResponse;
+use MThaller\PhpCups\Abstracts\CommandResponse;
 
 class StdResponse extends CommandResponse
 {

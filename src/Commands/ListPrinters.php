@@ -1,7 +1,7 @@
-<?php namespace MThallerWeb\PhpCups\Commands;
+<?php namespace MThaller\PhpCups\Commands;
 
-use MThallerWeb\PhpCups\Abstracts\Command;
-use MThallerWeb\PhpCups\Responses\PrinterList;
+use MThaller\PhpCups\Abstracts\Command;
+use MThaller\PhpCups\Responses\PrinterList;
 
 class ListPrinters extends Command {
 
