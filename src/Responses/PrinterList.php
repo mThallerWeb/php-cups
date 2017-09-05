@@ -13,16 +13,25 @@ class PrinterList extends CommandResponse
         $printers = explode(PHP_EOL, $this->data);
         $printersOut = [];
 
-        foreach($printers as $line) {
+        foreach ($printers as $line) {
             $line = trim($line);
-            if($line == '' || $line == 'Printing...') {continue;}
+            if ($line == '' || $line == 'Printing...') {
+                continue;
+            }
 
             $matches = [];
-            if(preg_match('~printer ([A-Za-z0-9_-]*) (now printing ([[0-9]*])|is idle).  enabled since (.*)~', $line, $matches)){
+            if (preg_match('~printer ([A-Za-z0-9_-]*) (now printing ([A-Za-z0-9_-]*)|is idle)\.  (enabled|disabled) since (.*)~',
+                $line, $matches)) {
                 $printerName = $matches[1];
-                $printerStatus = ($matches[2] == 'is idle') ? Printer::STATUS_IDLE : Printer::STATUS_IN_PROGRESS;
-                $printerEnabledSince = new \DateTime($matches[4]);
-                $printer = new Printer($printerName, $printerStatus, $printerEnabledSince);
+                $printerStatus = Printer::STATUS_UNDEFINED;
+                if ($matches[2] == 'is idle') {
+                    $printerStatus = Printer::STATUS_IDLE;
+                } elseif (strpos($matches[2], 'now printing') !== false) {
+                    $printerStatus = Printer::STATUS_PRINTING;
+                }
+                $printerEnabled = ($matches[4] == 'enabled');
+                $printerEnabledSince = new \DateTime($matches[5]);
+                $printer = new Printer($printerName, $printerStatus, $printerEnabledSince, $printerEnabled);
                 $printersOut[] = $printer;
             }
 
@@ -39,7 +48,7 @@ class PrinterList extends CommandResponse
         $arrayData = [];
 
         /** @var Printer $convertedPrinter */
-        foreach($this->convertedData as $convertedPrinter) {
+        foreach ($this->convertedData as $convertedPrinter) {
             $arrayData[] = $convertedPrinter->toArray();
         }
 

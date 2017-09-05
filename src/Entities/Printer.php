@@ -4,11 +4,14 @@ use MThaller\PhpCups\Abstracts\Entity;
 use MThaller\PhpCups\Exceptions\InvalidArgumentException;
 use MThaller\PhpCups\Exceptions\InvalidStatusException;
 
-class Printer extends Entity {
+class Printer extends Entity
+{
 
     const STATUS_IDLE = 1;
 
-    const STATUS_IN_PROGRESS = 2;
+    const STATUS_PRINTING = 2;
+
+    const STATUS_UNDEFINED = 3;
 
     /**
      * @var string
@@ -26,18 +29,25 @@ class Printer extends Entity {
     protected $enabledSince;
 
     /**
+     * @var bool
+     */
+    protected $enabled;
+
+    /**
      * Printer constructor.
      *
      * @param string $name
      * @param int $status
      * @param \DateTime $enabledSince
+     * @param bool $enabled
      */
-    public function __construct(string $name, int $status, \DateTime $enabledSince)
+    public function __construct(string $name, int $status, \DateTime $enabledSince, bool $enabled)
     {
         $this->name = $name;
         $this->validateStatus($status);
         $this->status = $status;
         $this->enabledSince = $enabledSince;
+        $this->enabled = $enabled;
     }
 
     /**
@@ -65,12 +75,21 @@ class Printer extends Entity {
     }
 
     /**
+     * @return bool
+     */
+    public function isEnabled(): bool
+    {
+        return $this->enabled;
+    }
+
+    /**
      * @param int $status
      *
      * @throws InvalidStatusException
      */
-    private function validateStatus(int $status) {
-        if($status !== Printer::STATUS_IDLE && $status !== Printer::STATUS_IN_PROGRESS) {
+    private function validateStatus(int $status)
+    {
+        if ($status !== Printer::STATUS_IDLE && $status !== Printer::STATUS_PRINTING && $status !== Printer::STATUS_UNDEFINED) {
             throw new InvalidArgumentException('The given status is not valid for a printer');
         }
     }
@@ -78,10 +97,24 @@ class Printer extends Entity {
     /**
      *
      */
-    public function toArray():array {
+    public function toArray(): array
+    {
+        switch ($this->getStatus()) {
+            case static::STATUS_IDLE:
+                $status = 'idle';
+                break;
+            case static::STATUS_PRINTING:
+                $status = 'printing';
+                break;
+            case static::STATUS_UNDEFINED:
+            default:
+                $status = 'undefined';
+        }
+        
         return [
             'name' => $this->getName(),
-            'status' => ($this->getStatus() == Printer::STATUS_IDLE) ? 'idle' : 'progress',
+            'status' => $status,
+            'enabled' => $this->isEnabled(),
             'enabled_since' => $this->getEnabledSince()->format('c')
         ];
     }
