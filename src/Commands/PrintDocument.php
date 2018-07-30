@@ -11,7 +11,7 @@ class PrintDocument extends Command {
     /**
      * @var string
      */
-    protected $command = 'lpr -P {##printerName##} {##amount##} {##filePath##}';
+    protected $command = 'lpr -P {##printerName##} -o job-priority={##priority##} {##amount##} {##filePath##}';
 
     /**
      * @var string
@@ -22,6 +22,11 @@ class PrintDocument extends Command {
      * @var int
      */
     protected $amount = 1;
+
+    /**
+     * @var int
+     */
+    protected $priority = 50;
 
     /**
      * @return string
@@ -53,6 +58,22 @@ class PrintDocument extends Command {
     public function setAmount(int $amount)
     {
         $this->amount = $amount;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+
+    /**
+     * @param int $priority
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
     }
 
     /**
