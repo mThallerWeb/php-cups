@@ -88,6 +88,7 @@ class PrintDocument extends Command {
         if($this->getAmount() > 1) {
             $decorators['amount'] = '-# ' . $this->getAmount();
         }
+        $decorators['priority'] = $this->getPriority();
 
         return $decorators;
     }
