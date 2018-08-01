@@ -11,7 +11,7 @@ class PrintDocument extends Command {
     /**
      * @var string
      */
-    protected $command = 'lpr -P {##printerName##} -o job-priority={##priority##} {##amount##} {##filePath##}';
+    protected $command = 'lpr -P {##printerName##} {##options##} {##amount##} {##filePath##}';
 
     /**
      * @var string
@@ -24,9 +24,9 @@ class PrintDocument extends Command {
     protected $amount = 1;
 
     /**
-     * @var int
+     * @var array
      */
-    protected $priority = 50;
+    protected $options = [];
 
     /**
      * @return string
@@ -61,19 +61,19 @@ class PrintDocument extends Command {
     }
 
     /**
-     * @return int
+     * @return array
      */
-    public function getPriority()
+    public function getOptions()
     {
-        return $this->priority;
+        return $this->options;
     }
 
     /**
-     * @param int $priority
+     * @param array $options
      */
-    public function setPriority($priority)
+    public function setOptions($options)
     {
-        $this->priority = $priority;
+        $this->options = $options;
     }
 
     /**
@@ -88,7 +88,16 @@ class PrintDocument extends Command {
         if($this->getAmount() > 1) {
             $decorators['amount'] = '-# ' . $this->getAmount();
         }
-        $decorators['priority'] = $this->getPriority();
+
+        if (!empty($this->getOptions())) {
+            $options = [];
+
+            foreach ($this->getOptions() as $option) {
+                $options[] = "-o {$option}";
+            }
+
+            $decorators['options'] = implode(' ', $options);
+        }
 
         return $decorators;
     }

@@ -46,7 +46,9 @@ abstract class Command
             throw new CommandNotDefinedException();
         }
 
-        return new Process($this->getDecoratedCommand());
+        Log::info($this->getDecoratedCommand());
+        return new Process('true');
+        //return new Process($this->getDecoratedCommand());
     }
 
     protected function validateArguments()
