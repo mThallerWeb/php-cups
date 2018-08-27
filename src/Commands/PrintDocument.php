@@ -97,6 +97,8 @@ class PrintDocument extends Command {
             }
 
             $decorators['options'] = implode(' ', $options);
+        } else {
+            $decorators['options'] = '';
         }
 
         return $decorators;
