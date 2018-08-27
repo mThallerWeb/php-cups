@@ -1,6 +1,5 @@
 <?php namespace MThaller\PhpCups\Abstracts;
 
-use Illuminate\Support\Facades\Log;
 use MThaller\PhpCups\Exceptions\CommandNotDefinedException;
 use MThaller\PhpCups\Helpers\Traits\ExtendedTraits;
 use MThaller\PhpCups\Responses\Error;
@@ -46,9 +45,7 @@ abstract class Command
             throw new CommandNotDefinedException();
         }
 
-        Log::info($this->getDecoratedCommand());
-        return new Process('true');
-        //return new Process($this->getDecoratedCommand());
+        return new Process($this->getDecoratedCommand());
     }
 
     protected function validateArguments()
