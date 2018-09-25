@@ -38,14 +38,9 @@ abstract class Command
      *
      * @throws CommandNotDefinedException
      */
-    protected function createProcess(): Process
+    protected function createProcess($commandString): Process
     {
-        $command = $this->getCommand();
-        if ($command === '' || !$command) {
-            throw new CommandNotDefinedException();
-        }
-
-        return new Process($this->getDecoratedCommand());
+        return new Process($commandString);
     }
 
     protected function validateArguments()
@@ -59,7 +54,7 @@ abstract class Command
     public function fire(): CommandResponse
     {
         $this->validateArguments();
-        $process = $this->createProcess();
+        $process = $this->createProcess($this->getDecoratedCommand());
         $process->run();
 
         if ($process->isSuccessful()) {
@@ -83,6 +78,10 @@ abstract class Command
     protected function getDecoratedCommand(): string
     {
         $command = $this->getCommand();
+        if ($command === '' || !$command) {
+            throw new CommandNotDefinedException();
+        }
+        
         $commandDecorators = $this->getCommandDecorators();
         foreach ($commandDecorators as $decoratorName => $decoratorValue) {
             $command = str_replace('{##' . $decoratorName . '##}', $decoratorValue, $command);
